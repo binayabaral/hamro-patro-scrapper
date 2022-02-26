@@ -7,7 +7,7 @@ const writeFileAsync = promisify(fs.writeFile); // (A)
 const SAVE_FILE_FOR_EACH_YEAR = true;
 
 const RECORDS_OF_YEAR = [];
-for (let y = 2078; y <= 2078; y++) {
+for (let y = 2079; y <= 2079; y++) {
   RECORDS_OF_YEAR.push(y);
 }
 const MONTHS = (() =>
@@ -34,7 +34,7 @@ const scrapHamroPatro = function scrapHamroPatro(page) {
         ['६', 6],
         ['७', 7],
         ['८', 8],
-        ['९', 9],
+        ['९', 9]
       ]);
 
       function nepToEngNum(strNum) {
@@ -51,7 +51,10 @@ const scrapHamroPatro = function scrapHamroPatro(page) {
 
       // !For Events
       const days = Array.from(body.querySelectorAll('.calendar .dates li:not(disable)'))
-        .filter(item => ![...item.classList].includes('disable') && (item.querySelector('span.event') || {}).innerText !== '--')
+        .filter(
+          item =>
+            ![...item.classList].includes('disable') && (item.querySelector('span.event') || {}).innerText !== '--'
+        )
         .map(item => {
           let tempArr = [];
           let events = (item.querySelector('span.event') || {}).innerText.split('/');
@@ -60,7 +63,7 @@ const scrapHamroPatro = function scrapHamroPatro(page) {
               tempArr.push({
                 'Start Date': item.id.replace(/-/g, '/'),
                 Subject: events[i].trim(),
-                'All Day Event': 'TRUE',
+                'All Day Event': 'TRUE'
               });
             }
           }
@@ -73,7 +76,7 @@ const scrapHamroPatro = function scrapHamroPatro(page) {
       //   .map(item => ({
       //     Subject: (item.querySelector('span') || {}).id.split('-u')[0],
       //     'Start Date': item.id.replace(/-/g, '/'),
-      //     'All Day Event': 'TRUE',
+      //     'All Day Event': 'TRUE'
       //   }));
 
       return days;
