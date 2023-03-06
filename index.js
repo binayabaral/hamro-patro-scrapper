@@ -7,7 +7,7 @@ const writeFileAsync = promisify(fs.writeFile); // (A)
 const SAVE_FILE_FOR_EACH_YEAR = true;
 
 const RECORDS_OF_YEAR = [];
-for (let y = 2079; y <= 2079; y++) {
+for (let y = 2080; y <= 2080; y++) {
   RECORDS_OF_YEAR.push(y);
 }
 const MONTHS = (() =>
@@ -21,7 +21,7 @@ const getHost = (year, month) => `https://www.hamropatro.com/calendar/${year}/${
 const scrapHamroPatro = function scrapHamroPatro(page) {
   return async function* (host) {
     console.log(`Fetching ${host}`);
-    await page.goto(host);
+    await page.goto(host, { waitUntil: 'networkidle2' });
     const bodyHandle = await page.$('body');
     const body = await page.evaluate(body => {
       const tableOfNepEngNums = new Map([
