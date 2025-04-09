@@ -7,7 +7,7 @@ const writeFileAsync = promisify(fs.writeFile); // (A)
 const SAVE_FILE_FOR_EACH_YEAR = true;
 
 const RECORDS_OF_YEAR = [];
-for (let y = 2081; y <= 2081; y++) {
+for (let y = 2082; y <= 2082; y++) {
   RECORDS_OF_YEAR.push(y);
 }
 const MONTHS = (() =>
